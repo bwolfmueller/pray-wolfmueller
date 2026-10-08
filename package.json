@@ -1,0 +1,19 @@
+{
+  "name": "pray-wolfmueller",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prayers and litanies by Pastor Bryan Wolfmueller, published at pray.wolfmueller.co",
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy && pagefind --site _site",
+    "import": "node scripts/import-wordpress.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "cheerio": "^1.2.0",
+    "pagefind": "^1.5.2",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.5"
+  }
+}

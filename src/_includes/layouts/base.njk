@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% if title and page.url != "/" %}{{ title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ summary or site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ summary or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  {% if image %}<meta property="og:image" content="{{ site.url }}{{ image }}">{% endif %}
+
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#f6f0e3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b1612" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-title" content="Pray">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Cormorant+SC:wght@500;600&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  {% block head %}{% endblock %}
+</head>
+<body class="{{ bodyClass }}">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <a class="brand" href="/">
+      <span class="brand-cross" aria-hidden="true">✠</span>
+      <span class="brand-name">{{ site.title }}</span>
+    </a>
+    <nav class="topnav" aria-label="Main">
+      <a href="/browse/" {% if page.url == "/browse/" %}aria-current="page"{% endif %}>Browse</a>
+      <a href="/search/" {% if page.url == "/search/" %}aria-current="page"{% endif %}>Search</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="colophon">
+    <div class="fleuron" aria-hidden="true">❧</div>
+    <p>{{ site.tagline }}<br>
+      <a href="{{ site.homeSite }}">wolfmueller.co</a> · Recovering the Joy of Theology</p>
+  </footer>
+
+  <script src="/js/app.js" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

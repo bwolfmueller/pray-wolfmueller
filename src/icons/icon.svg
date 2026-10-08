@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#9b2318"/>
+  <rect x="28" y="28" width="456" height="456" rx="76" fill="none" stroke="#e9cf98" stroke-width="6" opacity=".55"/>
+  <!-- cross pattée -->
+  <path fill="#f6f0e3" d="M226 96h60l-10 112 112-10v60l-112-10 10 168h-60l10-168-112 10v-60l112 10z"/>
+</svg>

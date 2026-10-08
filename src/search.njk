@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+title: Search
+permalink: /search/
+---
+<header class="page-head">
+  <h1>Search</h1>
+  <p>Find a prayer by a word or phrase you remember.</p>
+</header>
+
+<div id="search" class="search-ui"></div>
+<noscript><p>Search needs JavaScript. You can still <a href="/browse/">browse all prayers</a>.</p></noscript>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const ui = new PagefindUI({ element: "#search", showImages: false, showSubResults: true, resetStyles: false,
+      translations: { placeholder: "Search the prayers…", zero_results: "Nothing found for [SEARCH_TERM]." } });
+    const q = new URLSearchParams(location.search).get("q");
+    if (q) ui.triggerSearch(q);
+  });
+</script>

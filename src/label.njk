@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.facetPages
+  size: 1
+  alias: label
+permalink: "/{{ label.facet.path }}/{{ label.slug }}/"
+eleventyComputed:
+  title: "{{ label.name }}"
+  summary: "{{ label.description }}"
+---
+<header class="page-head">
+  <p class="page-kicker"><a href="/browse/">{{ label.facet.label }}</a></p>
+  <h1>{{ label.name }}</h1>
+  {% if label.description %}<p>{{ label.description }}</p>{% endif %}
+</header>
+
+<ul class="prayer-list">
+  {%- for p in label.items %}
+  <li><a href="{{ p.url }}"><span class="pl-title">{{ p.data.title }}</span>{% if p.data.attribution %}<span class="pl-note">{{ p.data.attribution }}</span>{% endif %}</a></li>
+  {%- endfor %}
+</ul>
+
+<p class="more"><a href="/browse/">‹ Browse all prayers</a></p>

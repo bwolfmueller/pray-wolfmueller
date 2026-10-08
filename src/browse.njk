@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+title: Browse
+permalink: /browse/
+---
+<header class="page-head">
+  <h1>All Prayers</h1>
+  <p>{{ collections.prayers.length }} prayers, litanies, and orders of devotion.</p>
+</header>
+
+<nav class="facet-nav" aria-label="Browse by">
+  {%- for facet in facets %}
+  <div class="facet-group">
+    <h2>{{ facet.label }}</h2>
+    <ul class="chips">
+      {%- for name in facet | facetValues(collections.prayers) %}
+      <li><a href="/{{ facet.path }}/{{ name | slugify }}/">{{ name }} <span>{{ name | facetCount(facet, collections.prayers) }}</span></a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endfor %}
+</nav>
+
+<section class="shelf">
+  <h2>A to Z</h2>
+  <ul class="prayer-list">
+    {%- for p in collections.prayers %}
+    <li><a href="{{ p.url }}"><span class="pl-title">{{ p.data.title }}</span>{% if p.data.attribution %}<span class="pl-note">{{ p.data.attribution }}</span>{% endif %}</a></li>
+    {%- endfor %}
+  </ul>
+</section>

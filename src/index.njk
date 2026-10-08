@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+title: Prayers & Litanies
+bodyClass: home
+---
+<section class="hero">
+  <p class="hero-kicker">Lord, teach us to pray</p>
+  <h1>{{ site.title }}</h1>
+  <p class="hero-lede">Prayers, litanies, and orders of devotion for the Church, the home, and the occasions of life.</p>
+  <form class="search-form" action="/search/" role="search">
+    <label class="visually-hidden" for="q">Search the prayers</label>
+    <input id="q" name="q" type="search" placeholder="Search the prayers…" autocomplete="off">
+    <button type="submit">Search</button>
+  </form>
+</section>
+
+<div class="ornament" aria-hidden="true"><span>✠</span></div>
+
+{%- for facet in facets %}
+{%- if facet.key != "source" %}
+<section class="shelf">
+  <h2>{{ facet.label }}</h2>
+  <ul class="tiles">
+    {%- for name in facet | facetValues(collections.prayers) %}
+    <li>
+      <a class="tile" href="/{{ facet.path }}/{{ name | slugify }}/">
+        <span class="tile-name">{{ name }}</span>
+        {%- set n = name | facetCount(facet, collections.prayers) %}
+        <span class="tile-count">{{ n }} {{ "prayer" if n == 1 else "prayers" }}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+{%- endfor %}
+
+<section class="shelf">
+  <h2>Recently Added</h2>
+  <ul class="prayer-list">
+    {%- for p in collections.recent | head(5) %}
+    <li><a href="{{ p.url }}"><span class="pl-title">{{ p.data.title }}</span>{% if p.data.attribution %}<span class="pl-note">{{ p.data.attribution }}</span>{% endif %}</a></li>
+    {%- endfor %}
+  </ul>
+  <p class="more"><a href="/browse/">All {{ collections.prayers.length }} prayers, A to Z ›</a></p>
+</section>

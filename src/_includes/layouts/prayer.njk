@@ -1,0 +1,71 @@
+---
+layout: layouts/base.njk
+bodyClass: prayer-page
+---
+{%- set shareUrl = site.url + page.url -%}
+<article class="prayer" data-pagefind-body>
+  <div class="prayer-tools">
+    <a class="back" href="/browse/" data-back>‹ All prayers</a>
+    <button class="share-button" type="button" data-share-open aria-haspopup="dialog">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v7H3zM5 5v3h3V5zM14 3h7v7h-7zm2 2v3h3V5zM3 14h7v7H3zm2 2v3h3v-3zM14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3h-3z"/></svg>
+      Share
+    </button>
+  </div>
+
+  <header class="prayer-head">
+    <h1>{{ title }}</h1>
+    {% if attribution %}<p class="attribution">{{ attribution }}</p>{% endif %}
+    <div class="ornament" aria-hidden="true"><span>✠</span></div>
+  </header>
+
+  {% if image %}
+  <figure class="prayer-image">
+    <img src="{{ image }}" alt="" loading="eager" width="1024" height="1024">
+  </figure>
+  {% endif %}
+
+  {% if pdf %}
+  <p class="pdf-link" data-pagefind-ignore><a href="{{ pdf }}">Download a printable PDF</a></p>
+  {% endif %}
+
+  <div class="prayer-body">
+    {{ content | safe }}
+  </div>
+
+  <footer class="prayer-foot" data-pagefind-ignore>
+    <div class="ornament" aria-hidden="true"><span>❧</span></div>
+    <ul class="labels" aria-label="Find similar prayers">
+      {%- set labels = { occasions: occasions, types: types, seasons: seasons, source: source } %}
+      {%- for facet in facets %}
+        {%- set values = labels[facet.key] | asList %}
+        {%- for name in values %}
+        <li><a href="/{{ facet.path }}/{{ name | slugify }}/">{{ name }}</a></li>
+        {%- endfor %}
+      {%- endfor %}
+    </ul>
+  </footer>
+</article>
+
+{%- set more = collections.prayers | related(page.url, occasions, seasons) %}
+{% if more.length %}
+<aside class="related">
+  <h2>You may also pray</h2>
+  <ul class="prayer-list">
+    {%- for p in more %}
+    <li><a href="{{ p.url }}"><span class="pl-title">{{ p.data.title }}</span>{% if p.data.attribution %}<span class="pl-note">{{ p.data.attribution }}</span>{% endif %}</a></li>
+    {%- endfor %}
+  </ul>
+</aside>
+{% endif %}
+
+<dialog class="share-dialog" data-share-dialog aria-labelledby="share-title">
+  <form method="dialog" class="share-close-form"><button class="share-close" aria-label="Close">×</button></form>
+  <h2 id="share-title">Share this prayer</h2>
+  <p class="share-hint">Let others scan this code to pray along.</p>
+  {{ shareUrl | qrSvg | safe }}
+  <p class="share-url">{{ shareUrl | replace("https://", "") }}</p>
+  <div class="share-actions">
+    <button type="button" data-copy="{{ shareUrl }}">Copy link</button>
+    <button type="button" data-native-share data-url="{{ shareUrl }}" data-title="{{ title }}" hidden>Share…</button>
+  </div>
+</dialog>
