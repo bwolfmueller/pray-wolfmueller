@@ -379,6 +379,36 @@ p { text-wrap: pretty; }
 }
 .prayer-body ul, .prayer-body ol { padding-left: 1.3rem; margin: 0 0 1.05em; }
 
+/* Scripture passages that open when tapped. */
+.prayer-body details.scripture {
+  border-bottom: 1px solid var(--rule);
+}
+.prayer-body details.scripture:first-of-type,
+.prayer-body :not(details) + details.scripture { border-top: 1px solid var(--rule); }
+.prayer-body details.scripture + :not(details) { margin-top: 1.05em; }
+.prayer-body details.scripture summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.45rem 0 0.45rem 1.4rem;
+  position: relative;
+  font-weight: 500;
+}
+.prayer-body details.scripture summary::-webkit-details-marker { display: none; }
+.prayer-body details.scripture summary::before {
+  content: "▸";
+  position: absolute;
+  left: 0.2rem;
+  color: var(--rubric);
+  transition: transform 0.15s;
+}
+.prayer-body details.scripture[open] summary::before { transform: rotate(90deg); }
+.prayer-body details.scripture summary:hover { color: var(--rubric); }
+.prayer-body details.scripture > :not(summary) {
+  margin-left: 1.4rem;
+  font-size: 0.95em;
+}
+.prayer-body details.scripture[open] { padding-bottom: 0.4rem; }
+
 .prayer-foot { margin-top: 2rem; }
 .labels { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem; }
 
