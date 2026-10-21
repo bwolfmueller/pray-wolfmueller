@@ -28,7 +28,7 @@ But kind and good, with healing in Thy wings;
 Tears for all woes, a heart for every plea.
 Come, Friend of sinners, thus abide with me.
 
-5. Thou on my head in every youth didst smile,
+5. Thou on my head in early youth didst smile,
 And though rebellious and perverse meanwhile,
 Thou hast not left me, oft as I left Thee.
 On to the close, O Lord, abide with me.

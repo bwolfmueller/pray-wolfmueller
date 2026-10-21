@@ -2,7 +2,7 @@
 title: "Praise to Thee and Adoration"
 section: "hymns"
 order: 14
-attribution: "Thomas Hansen Kingo, 168"
+attribution: "Thomas Hansen Kingo, 1689"
 hymnal: "The Lutheran Hymnal 401"
 scripture: "Psalm 106:1"
 melody: "/images/comfort-book/praise-to-thee-and-adoration.png"

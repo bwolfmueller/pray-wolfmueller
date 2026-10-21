@@ -1,5 +1,5 @@
 ---
-title: "Magnificant"
+title: "Magnificat"
 section: "canticles"
 order: 3
 attribution: "Luke 1:46-55"

@@ -20,7 +20,7 @@ Dearest Jesus, unto Thee.
 2. Thou, ah! Thou, hast taken on Thee
 Bonds and stripes, a cruel rod;
 Pain and scorn were heaped upon Thee,
-0 Thou sinless Son of God!
+O Thou sinless Son of God!
 Thus didst Thou my soul deliver
 From the bonds of sin forever.
 Thousand, thousand thanks shall be,

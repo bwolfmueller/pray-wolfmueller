@@ -13,7 +13,7 @@ Lord, have mercy upon us. Amen.
 
 ## For the Sick
 
-O Great Physician of body and soul, our lives are in Your hands. Hear our prayer in our trouble and need. Visit us with Your kindness. Help us in our need. Give us health of body and mind. And give us the wisdom and faith to receive this trouble as Your loving discipline and and give from Your paternal care, thought Jesus Christ, Your Son, our Lord, who lives and reigns with You and the Holy Spirit, One God, now and forever. Amen.
+O Great Physician of body and soul, our lives are in Your hands. Hear our prayer in our trouble and need. Visit us with Your kindness. Help us in our need. Give us health of body and mind. And give us the wisdom and faith to receive this trouble as Your loving discipline and give from Your paternal care, through Jesus Christ, Your Son, our Lord, who lives and reigns with You and the Holy Spirit, One God, now and forever. Amen.
 
 ## For Patience
 
@@ -29,11 +29,11 @@ O Lord Jesus Christ, You are raised from the dead and seated at the Father’s r
 
 ## For Those Who Travel
 
-Heavenly Father, Your Son Jesus has promise to be with us always, even to the end of the age. Be with us as we travel. Send Your angels to protect and keep us from all dangers. Bless our going out and our coming in, for this time forth, even forever more. Amen.
+Heavenly Father, Your Son Jesus has promised to be with us always, even to the end of the age. Be with us as we travel. Send Your angels to protect and keep us from all dangers. Bless our going out and our coming in, from this time forth, even forever more. Amen.
 
 ## For Wisdom
 
-O Lord, You have promised that if anyone lacks wisdom, they need only ask, and You will provide. We need wisdom. Give is to us. Teach us to fear You, to love You, to trust in You in all our ways. Make our path straight. Keep our feet from falling. Teach us according to Your Word. Amen.
+O Lord, You have promised that if anyone lacks wisdom, they need only ask, and You will provide. We need wisdom. Give it to us. Teach us to fear You, to love You, to trust in You in all our ways. Make our path straight. Keep our feet from falling. Teach us according to Your Word. Amen.
 
 ## For Humility
 

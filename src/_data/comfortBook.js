@@ -24,7 +24,7 @@ export default {
     "The Psalms and Canticles from the Scriptures are copied from the King James Version, 1611. The text of the <i>Gloria in Excelsis</i> and the <i>Te Deum Laudamus</i> are taken from the Book of Common Prayer.",
     "The Gospel of John is copied from the World English Bible, a text in the public domain. (Visit <a href=\"https://www.worldenglishbible.org\">worldenglishbible.org</a> for more information.)",
     "The hymns are copied from The Lutheran Hymnal (Copyright 1941), but are in the public domain. (Thanks to <a href=\"https://www.lutheran-hymnal.com\">lutheran-hymnal.com</a> for making these texts available.)",
-    "The prayers are composted by Pastor Bryan Wolfmueller, and are released into the public domain for the sake of the Gospel and the Church.",
+    "The prayers are composed by Pastor Bryan Wolfmueller, and are released into the public domain for the sake of the Gospel and the Church.",
     "The painting on the cover is “The Crucifixion” by Raphael, 1502-1503, and is in the public domain. (Thanks to <a href=\"https://www.wikiart.org\">wikiart.org</a> for making the image available.)",
     "Thanks to Keri Wolfmueller and Pastor Mark Preus for help selecting hymns. Thanks to Lyndsay Johnson for preparing the melodies of the hymns. Thanks to the Fellows of the Doxology Collegium for their input and suggestions",
     "Please send comments, corrections, notes, or questions to Bryan Wolfmueller, <a href=\"mailto:bwolfmueller@gmail.com\">bwolfmueller@gmail.com</a>.",

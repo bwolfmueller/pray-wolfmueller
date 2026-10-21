@@ -29,7 +29,7 @@ Give us this day our daily bread;
   but deliver us from evil.
 For Thine is the kingdom and the power and the glory forever and ever. Amen.
 
-## Prayers for Others and Outrsleves
+## Prayers for Others and Ourselves
 
 ### Morning
 
@@ -37,4 +37,4 @@ I thank You, my heavenly Father, through Jesus Christ, Your dear Son, that You h
 
 ### Evening
 
-I thank you, my heavenly Father, through Jesus Christ, Your dear Son, that You have graciously kept me this day; and I pray that You would forgive me all my sins where I have done wrong, and graciously keep me this night. For into Your hands, I commend myself, my body and soul, and all things. Let Your holy angel be with me, that the evil foe may have no power over me. Amen
+I thank you, my heavenly Father, through Jesus Christ, Your dear Son, that You have graciously kept me this day; and I pray that You would forgive me all my sins where I have done wrong, and graciously keep me this night. For into Your hands, I commend myself, my body and soul, and all things. Let Your holy angel be with me, that the evil foe may have no power over me. Amen.

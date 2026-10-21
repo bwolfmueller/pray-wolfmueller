@@ -40,7 +40,7 @@ And to thine own relief.
 
 7. He knows how oft a Christian weeps
 And why his tears now fall;
-And in the His mercy keeps
+And in the book His mercy keeps
 These things are noted all.
 
 8. His wisdom never plans in vain,
