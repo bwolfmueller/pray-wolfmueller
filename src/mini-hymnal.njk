@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+title: Mini Hymnal
+permalink: /mini-hymnal/
+bodyClass: hymnal-home
+summary: "Psalms, Scriptures, hymns, and prayers for use in the hospital, when traveling, and such."
+image: /images/mini-hymnal/the-crucifixion-raphael.jpg
+---
+{%- set book = collections.miniHymnal -%}
+<header class="page-head">
+  <h1>{{ miniHymnal.title }}</h1>
+  <p>{{ miniHymnal.tagline }}</p>
+</header>
+
+<div class="ornament" aria-hidden="true"><span>✠</span></div>
+
+<ul class="section-buttons">
+  {%- for s in miniHymnal.sections %}
+  {%- set items = book | inSection(s.key) %}
+  {%- if items.length %}
+  <li><a href="{{ ('/mini-hymnal/' + s.key + '/') if (miniHymnal.listed | sectionByKey(s.key)).key else items[0].url }}">{{ s.button or s.title }}</a></li>
+  {%- endif %}
+  {%- endfor %}
+</ul>
+
+<p class="offline-note" data-offline-status hidden></p>
+
+<p class="about-link"><a href="/mini-hymnal/about/">About this book</a></p>
+
+<script type="application/json" data-offline-pages>{{ book | offlineUrls | dump | safe }}</script>

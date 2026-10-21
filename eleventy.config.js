@@ -1,7 +1,6 @@
-import fs from "node:fs";
 import QRCode from "qrcode";
 import facets from "./src/_data/facets.js";
-import comfortBook from "./src/_data/comfortBook.js";
+import miniHymnal from "./src/_data/miniHymnal.js";
 
 export default function (eleventyConfig) {
   // Files copied to the website as they are.
@@ -17,7 +16,7 @@ export default function (eleventyConfig) {
   eleventyConfig.amendLibrary("md", (md) => {
     md.set({ breaks: true, html: true });
 
-    // Headings get an id so a link can jump to them (/comfort-book/prayers/#for-the-sick).
+    // Headings get an id so a link can jump to them (/mini-hymnal/prayers/#for-the-sick).
     md.core.ruler.push("heading-ids", (state) => {
       state.tokens.forEach((token, i) => {
         if (token.type !== "heading_open" || token.attrGet("id")) return;
@@ -104,10 +103,10 @@ export default function (eleventyConfig) {
     api.getFilteredByGlob("src/prayers/*.md").sort((a, b) => b.date - a.date)
   );
 
-  // The Comfort Book, in the order of the printed book: by section, then by `order`.
-  eleventyConfig.addCollection("comfortBook", (api) => {
-    const sectionIndex = (key) => comfortBook.sections.findIndex((s) => s.key === key);
-    return api.getFilteredByGlob("src/comfort-book/*.md").sort((a, b) =>
+  // The Mini Hymnal, in the order of the printed book: by section, then by `order`.
+  eleventyConfig.addCollection("miniHymnal", (api) => {
+    const sectionIndex = (key) => miniHymnal.sections.findIndex((s) => s.key === key);
+    return api.getFilteredByGlob("src/mini-hymnal/*.md").sort((a, b) =>
       sectionIndex(a.data.section) - sectionIndex(b.data.section) || (a.data.order || 0) - (b.data.order || 0)
     );
   });
@@ -156,7 +155,7 @@ export default function (eleventyConfig) {
       .map((x) => x.p);
   });
 
-  // ---- Comfort Book helpers ------------------------------------------------
+  // ---- Mini Hymnal helpers ------------------------------------------------
 
   eleventyConfig.addFilter("inSection", (pages, key) => pages.filter((p) => p.data.section === key));
 
@@ -168,17 +167,11 @@ export default function (eleventyConfig) {
     return { prev: pages[i - 1], next: pages[i + 1] };
   });
 
-  // The "## Headings" written in a page's file.
-  eleventyConfig.addFilter("headings", (page) =>
-    fs.readFileSync(page.inputPath, "utf8").split("\n").filter((l) => l.startsWith("## ")).map((l) => l.slice(3).trim())
-  );
-
-  // Every address in the Comfort Book, so it can be saved for reading offline.
-  eleventyConfig.addFilter("offlineUrls", (pages, cover) => [
-    "/comfort-book/",
-    cover,
+  // Every address in the Mini Hymnal, so it can be saved for reading offline.
+  eleventyConfig.addFilter("offlineUrls", (pages) => [
+    "/mini-hymnal/",
+    ...miniHymnal.listed.map((s) => `/mini-hymnal/${s.key}/`),
     ...pages.map((p) => p.url),
-    ...pages.map((p) => p.data.melody).filter(Boolean),
   ]);
 
   // A QR code for a link, drawn as an SVG image.

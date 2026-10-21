@@ -24,13 +24,14 @@ One Markdown file per prayer in `src/prayers/`; the file name is the URL slug. C
   optional `attribution`, `image`, `pdf`, `summary`. Label names and descriptions live in `src/_data/facets.js`.
 - Keep his wording exactly; point out typos rather than silently fixing them.
 
-## The Comfort Book
+## The Mini Hymnal
 
-The Mini-Hymnal 2.0 (`/comfort-book/`): one file per psalm, John chapter, canticle, and hymn in
-`src/comfort-book/`, plus `order-of-devotion.md` and `prayers.md`. Front matter: `title`, `section`
-(devotion, psalms, john, canticles, hymns, prayers), `order`, optional `subtitle`, `attribution`,
-`hymnal`, `scripture`, `melody`. Section titles and the book's credits live in `src/_data/comfortBook.js`.
-In hymns, `1. ` at the start of a stanza becomes a red stanza number. See README.md.
+The Mini Hymnal (`/mini-hymnal/`; the printed book is "The Mini-Hymnal 2.0: Comfort Book"): one file per
+psalm, John chapter, canticle, and hymn in `src/mini-hymnal/`, plus `order-of-devotion.md` and `prayers.md`.
+Front matter: `title`, `section` (devotion, psalms, john, canticles, hymns, prayers), `order`, optional
+`subtitle`, `attribution`, `hymnal`, `scripture`. Sections, button labels, and the book's credits live in
+`src/_data/miniHymnal.js`. In hymns, `1. ` at the start of a stanza becomes a red stanza number.
+No melodies (Bryan wants words only). See README.md.
 
 ## Commands
 

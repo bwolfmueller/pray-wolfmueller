@@ -1,0 +1,34 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: miniHymnal.listed
+  size: 1
+  alias: s
+permalink: "/mini-hymnal/{{ s.key }}/"
+eleventyComputed:
+  title: "{{ s.title }}"
+---
+{#- One page listing each part of the Mini Hymnal: /mini-hymnal/psalms/, /mini-hymnal/hymns/, ...
+    Parts with a single page (the Order of Devotion, the Prayers) link straight to it instead. -#}
+{%- set items = collections.miniHymnal | inSection(s.key) %}
+<header class="page-head">
+  <p class="page-kicker"><a href="/mini-hymnal/">Mini Hymnal</a></p>
+  <h1>{{ s.title }}</h1>
+  {% if s.note %}<p>{{ s.note }}</p>{% endif %}
+</header>
+
+{%- if s.key == "john" %}
+<ul class="chapter-grid">
+  {%- for p in items %}
+  <li><a href="{{ p.url }}" aria-label="{{ p.data.title }}">{{ p.data.order }}</a></li>
+  {%- endfor %}
+</ul>
+{%- else %}
+<ul class="prayer-list">
+  {%- for p in items %}
+  <li><a href="{{ p.url }}"><span class="pl-title">{{ p.data.title }}</span>{% if p.data.subtitle %}<span class="pl-note">{{ p.data.subtitle }}</span>{% elif p.data.attribution and s.key != "hymns" %}<span class="pl-note">{{ p.data.attribution }}</span>{% endif %}</a></li>
+  {%- endfor %}
+</ul>
+{%- endif %}
+
+<p class="more"><a href="/mini-hymnal/">‹ Mini Hymnal</a></p>

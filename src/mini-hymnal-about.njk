@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+title: About the Mini Hymnal
+permalink: /mini-hymnal/about/
+---
+<header class="page-head">
+  <p class="page-kicker"><a href="/mini-hymnal/">Mini Hymnal</a></p>
+  <h1>About This Book</h1>
+  <p>{{ miniHymnal.compiler }}</p>
+</header>
+
+<section class="about-book">
+  {%- for para in miniHymnal.about %}
+  <p>{{ para | safe }}</p>
+  {%- endfor %}
+</section>
+
+<p class="more"><a href="/mini-hymnal/">‹ Mini Hymnal</a></p>

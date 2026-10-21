@@ -62,11 +62,11 @@ works right away and gets its own page. To give it a description, add it to
 Optional extras: `image: /images/file.jpg` (put the picture in `src/images/`),
 `pdf:` a link to a printable version, and `summary:` a sentence for link previews.
 
-## The Comfort Book
+## The Mini Hymnal
 
-The Mini-Hymnal 2.0 lives at `/comfort-book/`. Each page is a file in `src/comfort-book/`
-(`psalm-23.md`, `john-3.md`, `abide-with-me.md`, `prayers.md`, ...), written the same way as a prayer.
-The front matter says where it goes in the book:
+The Mini Hymnal (printed as *The Mini-Hymnal 2.0: Comfort Book*) lives at `/mini-hymnal/`.
+Each page is a file in `src/mini-hymnal/` (`psalm-23.md`, `john-3.md`, `abide-with-me.md`,
+`prayers.md`, ...), written the same way as a prayer. The front matter says where it goes in the book:
 
 ```markdown
 ---
@@ -76,7 +76,6 @@ order: 17               # its place within the section
 attribution: "Henry F. Lyte, 1847"
 hymnal: "The Lutheran Hymnal 552"
 scripture: "Luke 24:29"
-melody: /images/comfort-book/abide-with-me.png
 ---
 
 1. Abide with me! Fast falls the eventide;
@@ -85,10 +84,11 @@ The darkness deepens; Lord with me abide.
 
 - In a hymn, a stanza that starts with `1. ` gets a red stanza number.
 - `<sup>3</sup>` is a red verse number (used in the Psalms and John).
-- Psalms can have a `subtitle:`. Each `## Heading` in `prayers.md` gets its own line on the contents page.
-- The section names and the "About This Book" notes are in `src/_data/comfortBook.js`.
-- Melody pictures go in `src/images/comfort-book/`.
-- Opening the contents page saves the whole book on the phone for reading without a connection.
+- Psalms can have a `subtitle:`.
+- The Mini Hymnal's front page has one button per section. Select Psalms, John, Canticles, and
+  Hymns open a list; the Order of Devotion and Prayers open straight to their page.
+- Section names, button labels, and the "About this book" notes are in `src/_data/miniHymnal.js`.
+- Opening the Mini Hymnal's front page saves the whole book on the phone for reading without a connection.
 
 ## Working on your computer
 
