@@ -37,6 +37,23 @@ document.querySelector("[data-back]")?.addEventListener("click", (event) => {
   }
 });
 
+// The Comfort Book's contents page saves the whole book on this device, so it can be
+// read in a hospital or on a plane without a connection. The cache name matches /sw.js.
+const offlinePages = document.querySelector("[data-offline-pages]");
+const offlineStatus = document.querySelector("[data-offline-status]");
+if (offlinePages && "caches" in window && "serviceWorker" in navigator && location.hostname !== "localhost") {
+  const urls = JSON.parse(offlinePages.textContent);
+  caches.open("pray-v1")
+    .then((cache) => cache.addAll(urls))
+    .then(() => {
+      if (offlineStatus) {
+        offlineStatus.textContent = "✓ Saved on this device for reading without an internet connection.";
+        offlineStatus.hidden = false;
+      }
+    })
+    .catch(() => {});
+}
+
 // Remember pages for reading offline (see /sw.js).
 if ("serviceWorker" in navigator && location.hostname !== "localhost") {
   navigator.serviceWorker.register("/sw.js").catch(() => {});

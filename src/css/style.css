@@ -110,9 +110,15 @@ p { text-wrap: pretty; }
   font-size: 1.3rem;
   letter-spacing: 0.04em;
 }
+.topnav a { white-space: nowrap; }
+/* On phones the menu sits under the title, so all three links fit. */
+@media (max-width: 560px) {
+  .masthead { flex-wrap: wrap; justify-content: center; row-gap: 0.25rem; padding-bottom: 0.6rem; }
+  .topnav { width: 100%; justify-content: center; }
+}
 @media (max-width: 420px) {
   .brand { font-size: 1.12rem; }
-  .topnav { gap: 0.8rem; font-size: 1rem; }
+  .topnav { gap: 1rem; font-size: 1.02rem; }
 }
 .brand-cross { color: var(--rubric); font-size: 1.1em; }
 
@@ -473,3 +479,144 @@ p { text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* ---- The Comfort Book ------------------------------------------------------- */
+
+/* Home page feature */
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 2rem 0 0.5rem;
+  padding: 0.9rem;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.feature:hover { border-color: var(--gold); color: inherit; transform: translateY(-1px); }
+.feature img {
+  flex: none;
+  width: 4.6rem;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 0 6px 18px -10px rgba(40, 25, 10, 0.6);
+}
+.feature-text { display: flex; flex-direction: column; gap: 0.1rem; }
+.feature-kicker { font-family: var(--caps); color: var(--rubric); letter-spacing: 0.1em; font-size: 0.95rem; }
+.feature-title { font-family: var(--caps); font-weight: 600; font-size: 1.45rem; line-height: 1.15; }
+.feature-note { color: var(--ink-soft); font-style: italic; font-size: 1rem; line-height: 1.35; }
+
+/* Contents page */
+.comfort-head .compiler { font-style: normal; font-size: 1.05rem; }
+.comfort-cover { max-width: 13rem; margin-top: 1.2rem; }
+.begin { text-align: center; margin: 0.5rem 0 0.4rem; }
+.begin-button {
+  display: inline-block;
+  font-family: var(--caps);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: #fff8ee;
+  background: var(--rubric);
+  border-radius: 999px;
+  padding: 0.45rem 1.4rem 0.5rem;
+}
+.begin-button:hover { color: #fff8ee; filter: brightness(1.08); }
+.offline-note { text-align: center; color: var(--ink-soft); font-style: italic; font-size: 0.98rem; margin: 0.4rem 0 0; }
+
+.book-jump {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem 1.1rem;
+  margin: 1.6rem 0 0;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--caps);
+  letter-spacing: 0.06em;
+  font-size: 1.08rem;
+}
+.book-jump a { text-decoration: none; color: var(--ink-soft); }
+.book-jump a:hover { color: var(--rubric); }
+
+.shelf-note { text-align: center; font-style: italic; color: var(--ink-soft); margin: -0.6rem 0 1rem; font-size: 1rem; }
+.comfort-home .shelf { scroll-margin-top: 1rem; }
+
+.chapter-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(3.1rem, 1fr));
+  gap: 0.45rem;
+}
+.chapter-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.chapter-grid a:hover { border-color: var(--gold); color: var(--rubric); }
+
+.about-book p { font-size: 1.02rem; color: var(--ink-soft); margin: 0 0 0.8em; }
+
+/* A page of the book */
+.prayer-head .page-kicker { margin: 0 0 0.3rem; }
+.subtitle { font-style: italic; font-size: 1.15rem; margin: -0.2rem auto 0.3rem; max-width: 28rem; }
+
+.prayer-body sup {
+  color: var(--rubric);
+  font-size: 0.62em;
+  line-height: 0;
+  margin-right: 0.08em;
+  font-feature-settings: "lnum";
+}
+.prayer-body.gospel p { text-indent: 0; }
+
+.stanza-no { color: var(--rubric); font-weight: 600; margin-right: 0.15em; }
+.prayer-body.hymn p { margin-bottom: 1.3em; }
+
+.melody { margin: 0 auto 1.8rem; }
+/* On a phone the melody keeps a readable size and scrolls sideways. */
+.melody-scroll {
+  overflow-x: auto;
+  padding: 0.6rem;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  -webkit-overflow-scrolling: touch;
+}
+.melody img { display: block; width: 100%; min-width: 40rem; height: auto; }
+.melody figcaption { text-align: center; font-style: italic; color: var(--ink-soft); font-size: 0.95rem; margin-top: 0.35rem; }
+
+.hymn-credit { text-align: center; font-style: italic; color: var(--ink-soft); font-size: 1rem; margin: 1.6rem 0 0; }
+
+.book-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 2.4rem;
+}
+.book-nav a {
+  display: flex;
+  flex-direction: column;
+  padding: 0.65rem 0.9rem;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  text-decoration: none;
+  min-width: 0;
+}
+.book-nav a:hover { border-color: var(--gold); color: inherit; }
+.book-nav-next { text-align: right; grid-column: 2; }
+.bn-dir { font-family: var(--caps); letter-spacing: 0.06em; color: var(--rubric); font-size: 0.98rem; }
+.bn-title { font-size: 1.08rem; line-height: 1.25; }
+.prayer-body h2[id], .prayer-body h3[id] { scroll-margin-top: 4rem; }

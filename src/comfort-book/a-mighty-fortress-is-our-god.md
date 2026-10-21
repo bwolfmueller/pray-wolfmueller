@@ -1,0 +1,49 @@
+---
+title: "A Mighty Fortress Is Our God"
+section: "hymns"
+order: 2
+attribution: "Martin Luther, 1529"
+hymnal: "The Lutheran Hymnal 262"
+scripture: "Psalm 46"
+melody: "/images/comfort-book/a-mighty-fortress-is-our-god.png"
+---
+
+1. A mighty Fortress is our God,
+A trusty Shield and Weapon;
+He helps us free from every need
+That hath us now o'ertaken.
+The old evil Foe
+Now means deadly woe;
+Deep guile and great might
+Are his dread arms in fight;
+On Earth is not his equal.
+
+2. With might of ours can naught be done,
+Soon were our loss effected;
+But for us fights the Valiant One,
+Whom God Himself elected.
+Ask ye, Who is this?
+Jesus Christ it is.
+Of Sabaoth Lord,
+And there's none other God;
+He holds the field forever.
+
+3. Though devils all the world should fill,
+All eager to devour us.
+We tremble not, we fear no ill,
+They shall not overpower us.
+This world's prince may still
+Scowl fierce as he will,
+He can harm us none,
+He's judged; the deed is done;
+One little word can fell him.
+
+4. The Word they still shall let remain
+Nor any thanks have for it;
+He's by our side upon the plain
+With His good gifts and Spirit.
+And take they our life,
+Goods, fame, child and wife,
+Let these all be gone,
+They yet have nothing won;
+The Kingdom our remaineth.

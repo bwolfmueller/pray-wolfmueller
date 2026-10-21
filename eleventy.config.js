@@ -1,5 +1,7 @@
+import fs from "node:fs";
 import QRCode from "qrcode";
 import facets from "./src/_data/facets.js";
+import comfortBook from "./src/_data/comfortBook.js";
 
 export default function (eleventyConfig) {
   // Files copied to the website as they are.
@@ -14,6 +16,15 @@ export default function (eleventyConfig) {
   // Every line break in a prayer file is a line break on the page.
   eleventyConfig.amendLibrary("md", (md) => {
     md.set({ breaks: true, html: true });
+
+    // Headings get an id so a link can jump to them (/comfort-book/prayers/#for-the-sick).
+    md.core.ruler.push("heading-ids", (state) => {
+      state.tokens.forEach((token, i) => {
+        if (token.type !== "heading_open" || token.attrGet("id")) return;
+        const text = state.tokens[i + 1]?.content || "";
+        if (text) token.attrSet("id", eleventyConfig.getFilter("slugify")(text));
+      });
+    });
 
     // Each line of a multi-line paragraph becomes its own line on the page, so a
     // line too long for a phone wraps with a hanging indent, as in a psalter.
@@ -76,6 +87,13 @@ export default function (eleventyConfig) {
     });
   });
 
+  // In hymns, a stanza that begins "1. " gets a red stanza number
+  // (instead of becoming a numbered list).
+  eleventyConfig.addPreprocessor("stanza-numbers", "md", (data, content) => {
+    if (data.section !== "hymns") return;
+    return content.replace(/^(\d+)\. (?=\S)/gm, '<span class="stanza-no">$1.</span> ');
+  });
+
   // ---- Collections ---------------------------------------------------------
 
   eleventyConfig.addCollection("prayers", (api) =>
@@ -85,6 +103,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection("recent", (api) =>
     api.getFilteredByGlob("src/prayers/*.md").sort((a, b) => b.date - a.date)
   );
+
+  // The Comfort Book, in the order of the printed book: by section, then by `order`.
+  eleventyConfig.addCollection("comfortBook", (api) => {
+    const sectionIndex = (key) => comfortBook.sections.findIndex((s) => s.key === key);
+    return api.getFilteredByGlob("src/comfort-book/*.md").sort((a, b) =>
+      sectionIndex(a.data.section) - sectionIndex(b.data.section) || (a.data.order || 0) - (b.data.order || 0)
+    );
+  });
 
   // One page for every label: /occasion/marriage/, /kind/litany/, ...
   eleventyConfig.addCollection("facetPages", (api) => {
@@ -129,6 +155,31 @@ export default function (eleventyConfig) {
       .slice(0, 4)
       .map((x) => x.p);
   });
+
+  // ---- Comfort Book helpers ------------------------------------------------
+
+  eleventyConfig.addFilter("inSection", (pages, key) => pages.filter((p) => p.data.section === key));
+
+  eleventyConfig.addFilter("sectionByKey", (sections, key) => sections.find((s) => s.key === key) || {});
+
+  // The page before and after this one, for turning pages.
+  eleventyConfig.addFilter("neighbors", (pages, url) => {
+    const i = pages.findIndex((p) => p.url === url);
+    return { prev: pages[i - 1], next: pages[i + 1] };
+  });
+
+  // The "## Headings" written in a page's file.
+  eleventyConfig.addFilter("headings", (page) =>
+    fs.readFileSync(page.inputPath, "utf8").split("\n").filter((l) => l.startsWith("## ")).map((l) => l.slice(3).trim())
+  );
+
+  // Every address in the Comfort Book, so it can be saved for reading offline.
+  eleventyConfig.addFilter("offlineUrls", (pages, cover) => [
+    "/comfort-book/",
+    cover,
+    ...pages.map((p) => p.url),
+    ...pages.map((p) => p.data.melody).filter(Boolean),
+  ]);
 
   // A QR code for a link, drawn as an SVG image.
   eleventyConfig.addFilter("qrSvg", (url) => {
