@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+title: The Comfort Book
+permalink: /comfort-book/
+bodyClass: comfort-home
+summary: "The Mini-Hymnal 2.0: Psalms, Scriptures, hymns, and prayers for use in the hospital, when traveling, and such."
+image: /images/comfort-book/the-crucifixion-raphael.jpg
+---
+{%- set book = collections.comfortBook -%}
+<header class="page-head comfort-head">
+  <p class="page-kicker">{{ comfortBook.edition }}</p>
+  <h1>{{ comfortBook.title }}</h1>
+  <p>{{ comfortBook.tagline }}</p>
+  <p class="compiler">{{ comfortBook.compiler }}</p>
+</header>
+
+<figure class="prayer-image comfort-cover">
+  <img src="{{ comfortBook.cover }}" alt="The Crucifixion, by Raphael" width="700" height="1174">
+</figure>
+
+{%- set devotion = book | inSection("devotion") | first %}
+<p class="begin"><a class="begin-button" href="{{ devotion.url }}">Begin with the Order of Devotion</a></p>
+<p class="offline-note" data-offline-status hidden></p>
+
+<nav class="book-jump" aria-label="Parts of the book">
+  {%- for s in comfortBook.sections %}{% if s.key != "devotion" %}<a href="#{{ s.key }}">{{ s.title | replace("The Gospel of ", "") }}</a>{% endif %}{% endfor %}
+</nav>
+
+{%- for s in comfortBook.sections %}
+{%- set items = book | inSection(s.key) %}
+{%- if s.key != "devotion" and items.length %}
+<section class="shelf" id="{{ s.key }}">
+  <h2>{{ s.title }}</h2>
+  {% if s.note %}<p class="shelf-note">{{ s.note }}</p>{% endif %}
+  {%- if s.key == "john" %}
+  <ul class="chapter-grid">
+    {%- for p in items %}
+    <li><a href="{{ p.url }}" aria-label="{{ p.data.title }}">{{ p.data.order }}</a></li>
+    {%- endfor %}
+  </ul>
+  {%- elif s.key == "prayers" %}
+  <ul class="prayer-list">
+    {%- for name in items[0] | headings %}
+    <li><a href="{{ items[0].url }}#{{ name | slugify }}"><span class="pl-title">{{ name }}</span></a></li>
+    {%- endfor %}
+  </ul>
+  {%- else %}
+  <ul class="prayer-list">
+    {%- for p in items %}
+    <li><a href="{{ p.url }}"><span class="pl-title">{{ p.data.title }}</span>{% if p.data.subtitle %}<span class="pl-note">{{ p.data.subtitle }}</span>{% elif p.data.attribution and s.key != "hymns" %}<span class="pl-note">{{ p.data.attribution }}</span>{% endif %}</a></li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+</section>
+{%- endif %}
+{%- endfor %}
+
+<section class="shelf about-book">
+  <h2>About This Book</h2>
+  {%- for para in comfortBook.about %}
+  <p>{{ para | safe }}</p>
+  {%- endfor %}
+</section>
+
+<script type="application/json" data-offline-pages>{{ book | offlineUrls(comfortBook.cover) | dump | safe }}</script>

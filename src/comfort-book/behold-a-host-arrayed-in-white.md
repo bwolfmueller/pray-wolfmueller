@@ -1,0 +1,48 @@
+---
+title: "Behold a Host, Arrayed in White"
+section: "hymns"
+order: 9
+attribution: "Hans Adolf Brorson, c. 1760"
+hymnal: "The Lutheran Hymnal 656"
+scripture: "Revelation 7:13-17"
+melody: "/images/comfort-book/behold-a-host-arrayed-in-white.png"
+---
+
+1. Behold a host, arrayed in white,
+Like thousand snow-clad mountains bright,
+With palms they stand. Who is this band
+Before the throne of light?
+Lo, these are they of glorious fame
+Who from the great affliction came
+And in the flood of Jesus' blood
+Are cleansed from guilt and blame.
+Now gathered in the holy place,
+Their voices they in worship raise,
+Their anthems swell where God doth dwell,
+Mid angels' songs of praise.
+
+2. Despised and scorned, they sojourned here;
+But now, how glorious they must appear!
+Those martyrs stand a priestly band,
+God's throne forever near.
+So oft, in troubled days gone by,
+In anguish they would weep and sigh,
+At home above the God of Love
+For aye their tears shall dry.
+They now enjoy their Sabbath rest,
+The paschal banquet of the blest;
+The Lamb, their Lord, at festal board
+Himself is Host and Guest.
+
+3. Then hail, ye mighty legions, yea,
+All hail! Now safe and blest for aye,
+And praise the Lord, who with His Word
+Sustained you on the way.
+Ye did the joys of earth disdain,
+Ye toiled and sowed in tears and pain.
+Farewell, now bring your sheaves and sing
+Salvation's glad refrain.
+Swing high your palms, lift up your song,
+Yea, make it myriad voices strong,
+Eternally shall praise to Thee,
+God, and the Lamb belong.

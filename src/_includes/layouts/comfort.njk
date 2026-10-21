@@ -1,0 +1,56 @@
+---
+layout: layouts/base.njk
+---
+{%- set shareUrl = site.url + page.url -%}
+{%- set nav = collections.comfortBook | neighbors(page.url) -%}
+{%- set sectionInfo = comfortBook.sections | sectionByKey(section) -%}
+<article class="prayer" data-pagefind-body data-pagefind-meta="book:Comfort Book">
+  <div class="prayer-tools">
+    <a class="back" href="/comfort-book/#{{ section }}">‹ Comfort Book</a>
+    <button class="share-button" type="button" data-share-open aria-haspopup="dialog">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v7H3zM5 5v3h3V5zM14 3h7v7h-7zm2 2v3h3V5zM3 14h7v7H3zm2 2v3h3v-3zM14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3h-3z"/></svg>
+      Share
+    </button>
+  </div>
+
+  <header class="prayer-head">
+    {% if section != "devotion" and section != "prayers" %}<p class="page-kicker"><a href="/comfort-book/#{{ section }}">{{ sectionInfo.title }}</a></p>{% endif %}
+    <h1>{{ title }}</h1>
+    {% if subtitle %}<p class="subtitle">{{ subtitle }}</p>{% endif %}
+    {% if attribution %}<p class="attribution">{{ attribution }}</p>{% endif %}
+    <div class="ornament" aria-hidden="true"><span>✠</span></div>
+  </header>
+
+  {% if melody %}
+  <figure class="melody" data-pagefind-ignore>
+    <div class="melody-scroll"><a href="{{ melody }}"><img src="{{ melody }}" alt="The melody of “{{ title }}”" loading="lazy"></a></div>
+    <figcaption>Melody · tap to enlarge</figcaption>
+  </figure>
+  {% endif %}
+
+  <div class="prayer-body{% if section == 'hymns' %} hymn{% elif section == 'john' %} gospel{% endif %}">
+    {{ content | safe }}
+  </div>
+
+  {% if hymnal or scripture %}
+  <p class="hymn-credit">{{ [scripture, hymnal] | join(" · ") }}</p>
+  {% endif %}
+
+  <nav class="book-nav" aria-label="Turn the page" data-pagefind-ignore>
+    {% if nav.prev %}<a class="book-nav-prev" href="{{ nav.prev.url }}" rel="prev"><span class="bn-dir">‹ Previous</span><span class="bn-title">{{ nav.prev.data.title }}</span></a>{% else %}<span></span>{% endif %}
+    {% if nav.next %}<a class="book-nav-next" href="{{ nav.next.url }}" rel="next"><span class="bn-dir">Next ›</span><span class="bn-title">{{ nav.next.data.title }}</span></a>{% endif %}
+  </nav>
+  <p class="more" data-pagefind-ignore><a href="/comfort-book/">Contents of the Comfort Book</a></p>
+</article>
+
+<dialog class="share-dialog" data-share-dialog aria-labelledby="share-title">
+  <form method="dialog" class="share-close-form"><button class="share-close" aria-label="Close">×</button></form>
+  <h2 id="share-title">Share this page</h2>
+  <p class="share-hint">Let others scan this code to pray along.</p>
+  {{ shareUrl | qrSvg | safe }}
+  <p class="share-url">{{ shareUrl | replace("https://", "") }}</p>
+  <div class="share-actions">
+    <button type="button" data-copy="{{ shareUrl }}">Copy link</button>
+    <button type="button" data-native-share data-url="{{ shareUrl }}" data-title="{{ title }}" hidden>Share…</button>
+  </div>
+</dialog>
