@@ -37,7 +37,7 @@ document.querySelector("[data-back]")?.addEventListener("click", (event) => {
   }
 });
 
-// The Comfort Book's contents page saves the whole book on this device, so it can be
+// The Mini Hymnal's front page saves the whole book on this device, so it can be
 // read in a hospital or on a plane without a connection. The cache name matches /sw.js.
 const offlinePages = document.querySelector("[data-offline-pages]");
 const offlineStatus = document.querySelector("[data-offline-status]");
